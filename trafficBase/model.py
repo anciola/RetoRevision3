@@ -50,6 +50,7 @@ class RandomModel(Model):
                     elif col == "D":
                         agent = Destination(f"d{r*self.width+c}", self)
                         self.grid.place_agent(agent, (c, self.height - r - 1))
+                        self.schedule.add(agent)
 
         self.num_agents = N
         self.running = True 
@@ -63,4 +64,4 @@ class RandomModel(Model):
             for agents, x, y in self.grid.coord_iter():
                 for agent in agents:
                     if isinstance(agent, Traffic_Light):
-                        agent.state = not agent.state
+                        agent.color = not agent.color
